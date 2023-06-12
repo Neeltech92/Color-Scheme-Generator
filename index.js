@@ -38,9 +38,9 @@ function render(data){
     document.querySelector('.color-container').innerHTML = container 
 }
 
-span.onclick = function() {
-document.execCommand("copy")
-}
+// span.onclick = function() {
+// document.execCommand("copy")
+// }
 
 
 span.addEventListener("copy", function(event) {
