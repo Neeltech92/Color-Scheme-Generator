@@ -50,6 +50,15 @@ form > button {
     color: white;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover{
+    background: #6587bb;
+}
+
+button:active{
+    transform: scale(0.95);
 }
 
 select{

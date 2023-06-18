@@ -1,0 +1,8 @@
+(function(){const r=document.createElement("link").relList;if(r&&r.supports&&r.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))c(e);new MutationObserver(e=>{for(const o of e)if(o.type==="childList")for(const i of o.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&c(i)}).observe(document,{childList:!0,subtree:!0});function n(e){const o={};return e.integrity&&(o.integrity=e.integrity),e.referrerPolicy&&(o.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?o.credentials="include":e.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function c(e){if(e.ep)return;e.ep=!0;const o=n(e);fetch(e.href,o)}})();const s=document.querySelector(".color-container");document.addEventListener("submit",t=>{t.preventDefault();let r=document.getElementById("color-picker").value,n=document.getElementById("mode-selector").value;r=r.substring(1),fetch(`https://www.thecolorapi.com/scheme?hex=${r}&mode=${n}&count=5`).then(c=>c.json()).then(c=>{l(c)})});function a(){fetch("https://www.thecolorapi.com/scheme?hex=000000&mode=monochrome&count=5").then(t=>t.json()).then(t=>{l(t)})}function l(t){let r="";t.colors.forEach(n=>{r+=`
+        <div class="color-sec">
+            <img src="${n.image.bare}" />
+            <div class="color-info">
+                <span>${n.name.value}</span>
+                <span>${n.hex.value}</span>
+            </div>
+        </div>`}),document.querySelector(".color-container").innerHTML=r}s.addEventListener("copy",function(t){t.preventDefault(),t.clipboardData&&(t.clipboardData.setData("text/plain",s.textContent),console.log(t.clipboardData.getData("text")))});a();
